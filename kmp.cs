@@ -1,7 +1,9 @@
     public static void KMPSearch(string text, string word)
     {
         var aux = Aux(word).ToArray();
+        //counter for word
         int i = 0;
+        //counter for text
         int j = 0;
 
         while(i < text.Length)
@@ -11,6 +13,9 @@
                 if(i == 0)
                     j++;
                 else
+                    // aux[i-1] will tell from where to compare next
+                    // and no need to match for W[0..aux[i-1] - 1],
+                    // they will match anyway, that’s what kmp is about.
                     i = aux[i - 1];
             }
             else
